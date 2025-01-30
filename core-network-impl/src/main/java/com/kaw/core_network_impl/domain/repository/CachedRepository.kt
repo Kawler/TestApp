@@ -2,10 +2,20 @@ package com.kaw.core_network_impl.domain.repository
 
 import com.kaw.core_network_api.data.dto.ResponseDto
 import com.kaw.core_network_api.domain.source.RemoteDataSource
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.filter
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.flow.take
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -14,16 +24,30 @@ class CachedRepository @Inject constructor(
     private val remoteDataSource: RemoteDataSource,
 ) {
     private val _cachedResponse = MutableStateFlow<ResponseDto?>(null)
-    val cachedResponse: StateFlow<ResponseDto?> = _cachedResponse
+
+    private val _isDataLoaded = MutableStateFlow(false)
+
+    private val coroutineScope = CoroutineScope(SupervisorJob() + Dispatchers.IO)
+
+    init {
+        coroutineScope.launch {
+            remoteDataSource.getResponse()
+                .onEach { response ->
+                    _cachedResponse.value = response
+                    _isDataLoaded.value = true
+                }
+                .catch { exception ->
+                    _isDataLoaded.value = true
+                }
+                .collect{}
+        }
+    }
 
     fun getResponse(): Flow<ResponseDto> = flow {
-        if(_cachedResponse.value != null){
-            emit(_cachedResponse.value!!)
-        } else {
-            remoteDataSource.getResponse().collect{ response ->
-                _cachedResponse.value = response
-                emit(response)
-            }
+        _isDataLoaded.filter { it }.take(1).first()
+
+        _cachedResponse.value?.let { cached ->
+            emit(cached)
         }
     }
 }

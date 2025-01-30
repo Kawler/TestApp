@@ -28,6 +28,7 @@ class NetworkModule {
     fun provideRemoteDataSource(service: JobSearchService): RemoteDataSource {
         return RemoteDataSourceImpl(service)
     }
+    @Singleton
     @Provides
     fun provideCachedRepository(remoteDataSource: RemoteDataSource): CachedRepository {
         return CachedRepository(remoteDataSource)
