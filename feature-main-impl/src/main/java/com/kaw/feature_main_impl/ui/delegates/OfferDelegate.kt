@@ -16,7 +16,8 @@ fun OfferDelegate() = adapterDelegateViewBinding<Offer, Any, ItemOfferBinding>(
     on = { item, _, _ -> item is Offer}
 ) {
     bind {
-        binding.offerTitleTextView.text = item.title
+        binding.offerTitleTextView.text = item.title?.trim()
+        binding.offerTitleTextView.setLineSpacing(0F, 0.9F)
         binding.offerButtonTextView.apply {
             text = item.button?.text?.trim()
             visibility = if(item.button?.text.isNullOrEmpty()) View.GONE else View.VISIBLE

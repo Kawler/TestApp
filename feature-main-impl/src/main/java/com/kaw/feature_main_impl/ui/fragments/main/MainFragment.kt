@@ -43,6 +43,7 @@ class MainFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.moreVacanciesButton.visibility = View.GONE
+        binding.vacanciesTitle.visibility = View.GONE
         setupRecyclerview()
         setupObservers()
         setupClickListeners()
