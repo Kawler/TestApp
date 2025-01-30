@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="GradleMigrationSettings" migrationVersion="1" />
+  <component name="GradleSettings">
+    <option name="linkedExternalProjectsSettings">
+      <GradleProjectSettings>
+        <option name="testRunner" value="CHOOSE_PER_TEST" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="gradleJvm" value="#GRADLE_LOCAL_JAVA_HOME" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/core-db-api" />
+            <option value="$PROJECT_DIR$/core-db-impl" />
+            <option value="$PROJECT_DIR$/core-network-api" />
+            <option value="$PROJECT_DIR$/core-network-impl" />
+            <option value="$PROJECT_DIR$/core-utils" />
+            <option value="$PROJECT_DIR$/feature-favorite-api" />
+            <option value="$PROJECT_DIR$/feature-favorite-impl" />
+            <option value="$PROJECT_DIR$/feature-main-api" />
+            <option value="$PROJECT_DIR$/feature-main-impl" />
+            <option value="$PROJECT_DIR$/feature-vacancy-details-api" />
+            <option value="$PROJECT_DIR$/feature-vacancy-details-impl" />
+          </set>
+        </option>
+        <option name="resolveExternalAnnotations" value="false" />
+      </GradleProjectSettings>
+    </option>
+  </component>
+</project>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@id/mainFragment">
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.kaw.feature_main_impl.ui.fragments.main.MainFragment"
+        android:label="MainFragment"
+        tools:layout="@layout/main_fragment">
+        <action
+            android:id="@+id/action_mainFragment_to_vacanciesByRelevanceFragment"
+            app:destination="@id/vacanciesByRelevanceFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/favoriteFragment"
+        android:name="com.kaw.feature_favorite_impl.ui.fragments.FavoriteFragment"
+        android:label="FavoriteFragment"
+        tools:layout="@layout/fragment_favorite"/>
+    <fragment
+        android:id="@+id/vacanciesByRelevanceFragment"
+        android:name="com.kaw.feature_main_impl.ui.fragments.relevance.VacanciesByRelevanceFragment"
+        android:label="VacanciesByRelevanceFragment"
+        tools:layout="@layout/vacancies_by_relevance_fragment"/>
+
+
+</navigation>

@@ -1,0 +1,122 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.EffMob" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/blue</item>
+        <item name="colorPrimaryVariant">@color/dark_blue</item>
+        <item name="colorOnPrimary">@color/white</item>
+
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/green</item>
+        <item name="colorSecondaryVariant">@color/dark_green</item>
+        <item name="colorOnSecondary">@color/white</item>
+
+
+        <!-- Background colors -->
+        <item name="android:windowBackground">@color/black</item>
+        <item name="cardBackgroundColor">@color/grey_100</item>
+
+
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor">@color/black</item>
+        <item name="android:navigationBarColor">@color/black</item>
+
+        <!-- Text colors -->
+        <item name="android:textColor">@color/white</item>
+        <item name="textColorPrimary">@color/white</item>
+        <item name="textColorSecondary">@color/grey_300</item>
+        <item name="textColorButton">@color/white</item>
+        <item name="textColorNumber">@color/grey_400</item>
+
+        <!-- Common text appearances -->
+        <item name="textAppearanceTitle1">@style/TextAppearance.EffMob.Title1</item>
+        <item name="textAppearanceTitle2">@style/TextAppearance.EffMob.Title2</item>
+        <item name="textAppearanceTitle3">@style/TextAppearance.EffMob.Title3</item>
+        <item name="textAppearanceTitle4">@style/TextAppearance.EffMob.Title4</item>
+        <item name="textAppearanceText1">@style/TextAppearance.EffMob.Text1</item>
+        <item name="textAppearanceButtonText1">@style/TextAppearance.EffMob.ButtonText1</item>
+        <item name="textAppearanceButtonText2">@style/TextAppearance.EffMob.ButtonText2</item>
+        <item name="textAppearanceTabText">@style/TextAppearance.EffMob.TabText</item>
+        <item name="textAppearanceNumber">@style/TextAppearance.EffMob.Number</item>
+
+        <!-- Custom button style -->
+        <item name="materialButtonStyle">@style/Widget.EffMob.Button</item>
+        <!-- Custom card style-->
+        <item name="cardViewStyle">@style/Widget.EffMob.CardView</item>
+
+    </style>
+
+    <style name="TextAppearance.EffMob.Title1" parent="TextAppearance.Material3.HeadlineSmall">
+        <item name="android:textColor">?attr/textColorPrimary</item>
+        <item name="android:textSize">22sp</item>
+        <item name="fontFamily">@font/sf_semibold</item>
+    </style>
+
+    <style name="TextAppearance.EffMob.Title2" parent="TextAppearance.Material3.HeadlineSmall">
+        <item name="android:textColor">?attr/textColorPrimary</item>
+        <item name="android:textSize">20sp</item>
+        <item name="fontFamily">@font/sf_semibold</item>
+    </style>
+
+    <style name="TextAppearance.EffMob.Title3" parent="TextAppearance.Material3.TitleMedium">
+        <item name="android:textColor">?attr/textColorPrimary</item>
+        <item name="android:textSize">16sp</item>
+        <item name="fontFamily">@font/sf_medium</item>
+    </style>
+
+    <style name="TextAppearance.EffMob.Title4" parent="TextAppearance.Material3.TitleMedium">
+        <item name="android:textColor">?attr/textColorPrimary</item>
+        <item name="android:textSize">14sp</item>
+        <item name="fontFamily">@font/sf_medium</item>
+    </style>
+
+    <style name="TextAppearance.EffMob.Text1" parent="TextAppearance.Material3.BodyMedium">
+        <item name="android:textColor">?attr/textColorPrimary</item>
+        <item name="android:textSize">14sp</item>
+        <item name="fontFamily">@font/sf_regular</item>
+    </style>
+
+    <style name="TextAppearance.EffMob.ButtonText1" parent="TextAppearance.Material3.LabelLarge">
+        <item name="android:textColor">?attr/textColorButton</item>
+        <item name="android:textSize">16sp</item>
+        <item name="fontFamily">@font/sf_semibold</item>
+    </style>
+
+    <style name="TextAppearance.EffMob.ButtonText2" parent="TextAppearance.Material3.LabelLarge">
+        <item name="android:textColor">?attr/textColorButton</item>
+        <item name="android:textSize">14sp</item>
+        <item name="fontFamily">@font/sf_regular</item>
+    </style>
+
+    <style name="TextAppearance.EffMob.TabText" parent="TextAppearance.Material3.LabelSmall">
+        <item name="android:textColor">?attr/textColorSecondary</item>
+        <item name="android:textSize">10sp</item>
+        <item name="fontFamily">@font/sf_regular</item>
+    </style>
+
+    <style name="TextAppearance.EffMob.Number" parent="TextAppearance.Material3.LabelSmall">
+        <item name="android:textColor">?attr/textColorNumber</item>
+        <item name="android:textSize">7sp</item>
+        <item name="fontFamily">@font/sf_regular</item>
+    </style>
+
+
+    <!-- Custom button style -->
+    <style name="Widget.EffMob.Button" parent="Widget.Material3.Button">
+        <item name="backgroundTint">@color/green</item>
+        <item name="android:textColor">?attr/textColorButton</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textAppearance">?attr/textAppearanceButtonText1</item>
+        <item name="cornerRadius">4dp</item>
+
+    </style>
+
+    <!-- Custom card style-->
+    <style name="Widget.EffMob.CardView" parent="CardView">
+        <item name="cardBackgroundColor">?attr/cardBackgroundColor</item>
+        <item name="cardElevation">4dp</item>
+        <item name="cardCornerRadius">8dp</item>
+    </style>
+
+
+</resources>

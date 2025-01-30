@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="132dp"
+    android:layout_height="120dp"
+    android:layout_marginEnd="8dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/Widget.Home.CardView"
+    android:theme="@style/Theme.Home">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="8dp">
+        <ImageView
+            android:id="@+id/offer_promo_img"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@drawable/ic_location"
+            android:padding="5dp"
+            android:background="@drawable/promo_img_bg"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/offerTitleTextView"/>
+        <TextView
+            android:id="@+id/offerTitleTextView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="10dp"
+            android:text="Вакансии рядом с вами"
+            android:ellipsize="end"
+            android:lineHeight="16dp"
+            style="@style/TextAppearance.Home.Title4"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/offerButtonTextView"
+            app:layout_constraintTop_toBottomOf="@id/offer_promo_img" />
+
+        <TextView
+            android:id="@+id/offerButtonTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:textColor="@color/green"
+            style="@style/TextAppearance.Home.Text1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/offerTitleTextView"
+            app:layout_constraintBottom_toBottomOf="parent"
+            />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>

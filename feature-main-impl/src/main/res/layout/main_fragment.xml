@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:theme="@style/Theme.Home"
+    android:background="@color/black"
+    android:paddingStart="16dp"
+    android:paddingEnd="16dp"
+    android:paddingTop="16dp"
+    android:paddingBottom="8dp"
+    tools:context=".ui.fragments.main.MainFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/top_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/search_container"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            app:layout_constraintEnd_toStartOf="@+id/filter_container"
+            app:layout_constraintStart_toStartOf="parent"
+            style="@style/Widget.Home.CardView"
+            android:backgroundTint="@color/grey_200"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/searchField"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:maxLines="1"
+                android:drawablePadding="8dp"
+                android:gravity="center_vertical"
+                android:padding="10dp"
+                android:textColor="@color/grey_300"
+                android:text="Должность, ключевые слова"
+                style="@style/TextAppearance.Home.Text1"
+                android:drawableStart="@drawable/ic_search"
+                android:drawableTint="@color/grey_300" />
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/filter_container"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="10dp"
+            style="@style/Widget.Home.CardView"
+            android:backgroundTint="@color/grey_200"
+            app:layout_constraintBottom_toBottomOf="@id/search_container"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/search_container"
+            app:layout_constraintTop_toTopOf="@id/search_container">
+
+            <ImageView
+                android:id="@+id/filterButton"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="12dp"
+                android:src="@drawable/ic_filter"/>
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/promo_rv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/top_container"
+        tools:listitem="@layout/item_offer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/vacancies_title" />
+
+    <TextView
+        android:id="@+id/vacancies_title"
+        android:layout_width="match_parent"
+        android:text="Вакансии для вас"
+        android:layout_marginTop="10dp"
+        android:textFontWeight="500"
+        style="@style/TextAppearance.Home.Title2"
+        app:layout_constraintTop_toBottomOf="@id/promo_rv"
+        app:layout_constraintBottom_toTopOf="@id/mainRecyclerView"
+        android:layout_height="wrap_content"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/mainRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        tools:listitem="@layout/item_vacancy"
+        app:layout_constraintBottom_toTopOf="@+id/moreVacanciesButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/vacancies_title" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/moreVacanciesButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cornerRadius="8dp"
+        android:padding="14dp"
+        android:text="Ещё 143 вакансии"
+        android:layout_marginTop="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/mainRecyclerView"
+        app:layout_constraintStart_toStartOf="parent"
+        style="@style/TextAppearance.Home.ButtonText1" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+    

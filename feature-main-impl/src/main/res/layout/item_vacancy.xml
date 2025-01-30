@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:theme="@style/Theme.Home"
+    android:layout_marginBottom="8dp"
+    style="@style/Widget.Home.CardView">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/lookingTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/green"
+            android:text="Сейчас смотри"
+            style="@style/TextAppearance.Home.Text1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/vacancyTitleTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Ui/Ux Designer"
+            style="@style/TextAppearance.Home.Title3"
+            app:layout_constraintEnd_toStartOf="@+id/favoriteImageView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lookingTextView" />
+
+        <TextView
+            android:id="@+id/vacancySalary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/TextAppearance.Home.Title2"
+            android:text="1500-2900 Br"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@id/vacancyTitleTextView"
+            app:layout_constraintStart_toStartOf="parent"
+            android:textFontWeight="600"/>
+
+        <TextView
+            android:id="@+id/locationTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Минск"
+            style="@style/TextAppearance.Home.Text1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/vacancySalary"
+            app:layout_constraintEnd_toStartOf="@+id/favoriteImageView"/>
+
+        <TextView
+            android:id="@+id/companyNameTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="Еком дизайн"
+            style="@style/TextAppearance.Home.Text1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/locationTextView"/>
+        
+        <ImageView
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:src="@drawable/ic_checkmark"
+            app:layout_constraintTop_toTopOf="@id/companyNameTextView"
+            android:layout_marginStart="8dp"
+            app:layout_constraintBottom_toBottomOf="@id/companyNameTextView"
+            app:layout_constraintStart_toEndOf="@id/companyNameTextView"/>
+
+        <ImageView
+            android:id="@+id/experienceImage"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:src="@drawable/ic_experience"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/experienceTextView"
+            app:layout_constraintBottom_toBottomOf="@id/experienceTextView"/>
+
+        <TextView
+            android:id="@+id/experienceTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Опыт от 1 года до 3 лет"
+            android:layout_marginStart="8dp"
+            style="@style/TextAppearance.Home.Text1"
+            app:layout_constraintStart_toEndOf="@id/experienceImage"
+            app:layout_constraintTop_toBottomOf="@id/companyNameTextView"/>
+
+        <TextView
+            android:id="@+id/dateTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:textColor="@color/grey_300"
+            android:text="Опубликовано 16 февраля"
+            style="@style/TextAppearance.Home.Text1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/experienceTextView"
+            app:layout_constraintEnd_toStartOf="@+id/favoriteImageView"/>
+
+        <ImageView
+            android:id="@+id/favoriteImageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:contentDescription="Favorite button"
+            android:src="@drawable/ic_fav"
+            android:clickable="true"
+            android:focusable="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@id/dateTextView"
+            android:backgroundTint="@color/green"
+            android:text="Откликнуться"
+            android:padding="10dp"
+            style="@style/TextAppearance.Home.ButtonText2"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>
+
+
+    
