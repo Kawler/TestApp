@@ -6,7 +6,7 @@ import com.kaw.core_db_api.domain.source.LocalDataSource
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
-class LocalDataSourceImpl @Inject constructor(private val favoriteVacancyDao: FavoriteVacancyDao):
+class LocalDataSourceImpl @Inject constructor(private val favoriteVacancyDao: FavoriteVacancyDao) :
     LocalDataSource {
 
     override suspend fun insert(favoriteVacancy: FavoriteVacancyEntity) {
@@ -25,7 +25,7 @@ class LocalDataSourceImpl @Inject constructor(private val favoriteVacancyDao: Fa
         return favoriteVacancyDao.getAll()
     }
 
-    override suspend fun getById(id: String): FavoriteVacancyEntity?{
+    override suspend fun getById(id: String): FavoriteVacancyEntity? {
         return favoriteVacancyDao.getById(id)
     }
 }

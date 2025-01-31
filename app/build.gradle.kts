@@ -46,7 +46,8 @@ dependencies {
     implementation(project(":feature-favorite-impl"))
     implementation(project(":core-network-impl"))
     implementation(project(":core-network-api"))
-    
+    implementation(project(":feature-vacancy-details-impl"))
+
     implementation(libs.room.runtime)
     implementation(project(":core-db-api"))
     implementation(project(":core-db-impl"))

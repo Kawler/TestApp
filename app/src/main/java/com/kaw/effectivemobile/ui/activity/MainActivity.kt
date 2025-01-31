@@ -2,7 +2,6 @@ package com.kaw.effectivemobile.ui.activity
 
 import android.os.Bundle
 import androidx.activity.viewModels
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.MenuHost
 import androidx.lifecycle.Lifecycle
@@ -10,6 +9,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.kaw.effectivemobile.R
 import com.kaw.effectivemobile.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -48,11 +48,12 @@ class MainActivity : AppCompatActivity(), MenuHost {
 
 
     private fun updateBadge(count: Int) {
-        if (count != 0){
-        binding.navView.getOrCreateBadge(R.id.favoriteFragment).apply {
-            isVisible = count > 0
-            text = count.toString()
-            backgroundColor = applicationContext.getColor(R.color.red)
-        }}
+        if (count != 0) {
+            binding.navView.getOrCreateBadge(R.id.favoriteFragment).apply {
+                isVisible = count > 0
+                text = count.toString()
+                backgroundColor = applicationContext.getColor(R.color.red)
+            }
+        }
     }
 }

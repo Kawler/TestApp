@@ -8,8 +8,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.flow.first
@@ -23,7 +21,7 @@ import javax.inject.Singleton
 @Singleton
 class CachedRepositoryImpl @Inject constructor(
     private val remoteDataSource: RemoteDataSource,
-): CachedRepository {
+) : CachedRepository {
     private val _cachedResponse = MutableStateFlow<ResponseDto?>(null)
 
     private val _isDataLoaded = MutableStateFlow(false)
@@ -40,7 +38,7 @@ class CachedRepositoryImpl @Inject constructor(
                 .catch { exception ->
                     _isDataLoaded.value = true
                 }
-                .collect{}
+                .collect {}
         }
     }
 

@@ -13,17 +13,28 @@
         <action
             android:id="@+id/action_mainFragment_to_vacanciesByRelevanceFragment"
             app:destination="@id/vacanciesByRelevanceFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_vacancyDetailsFragment"
+            app:destination="@id/vacancyDetailsFragment" />
     </fragment>
     <fragment
         android:id="@+id/favoriteFragment"
         android:name="com.kaw.feature_favorite_impl.ui.fragments.FavoriteFragment"
         android:label="FavoriteFragment"
-        tools:layout="@layout/fragment_favorite"/>
+        tools:layout="@layout/fragment_favorite">
+        <action
+            android:id="@+id/action_favoriteFragment_to_vacancyDetailsFragment"
+            app:destination="@id/vacancyDetailsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/vacanciesByRelevanceFragment"
         android:name="com.kaw.feature_main_impl.ui.fragments.relevance.VacanciesByRelevanceFragment"
         android:label="VacanciesByRelevanceFragment"
-        tools:layout="@layout/vacancies_by_relevance_fragment"/>
+        tools:layout="@layout/vacancies_by_relevance_fragment">
+        <action
+            android:id="@+id/action_vacanciesByRelevanceFragment_to_vacancyDetailsFragment"
+            app:destination="@id/vacancyDetailsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/callbacksFragment"
         android:name="com.kaw.effectivemobile.ui.fragments.callbacks.CallbacksFragment"
@@ -39,6 +50,15 @@
         android:name="com.kaw.effectivemobile.ui.fragments.profile.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/vacancyDetailsFragment"
+        android:name="com.kaw.feature_vacancy_details_impl.ui.fragments.VacancyDetailsFragment"
+        android:label="VacancyDetailsFragment"
+        tools:layout="@layout/fragment_vacancy_details">
+        <deepLink
+            android:id="@+id/details_deeplink"
+            app:uri="app://details" />
+    </fragment>
 
 
 </navigation>

@@ -6,6 +6,6 @@ import com.kaw.core_db_api.data.dao.FavoriteVacancyDao
 import com.kaw.core_db_api.domain.entity.FavoriteVacancyEntity
 
 @Database(entities = [FavoriteVacancyEntity::class], version = 1, exportSchema = false)
-abstract class AppDatabase: RoomDatabase() {
+abstract class AppDatabase : RoomDatabase() {
     abstract fun favoriteVacancyDao(): FavoriteVacancyDao
 }

@@ -35,12 +35,12 @@ class MainScreenSharedViewModel @Inject constructor(
 
     override fun updateFavorite(vacancyId: String, isFavorite: Boolean) {
         viewModelScope.launch {
-            updateFavoriteUseCase.execute(vacancyId, isFavorite).collect{}
+            updateFavoriteUseCase.execute(vacancyId, isFavorite).collect {}
             val currentData = _screenData.value ?: return@launch
             val updatedVacancies = currentData.vacancies!!.map { vacancy ->
-                if(vacancy.id == vacancyId){
+                if (vacancy.id == vacancyId) {
                     vacancy.copy(isFavorite = isFavorite)
-                }else {
+                } else {
                     vacancy
                 }
             }

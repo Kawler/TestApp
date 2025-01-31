@@ -4,12 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:theme="@style/Theme.Home"
     android:background="@color/black"
     android:paddingStart="16dp"
-    android:paddingEnd="16dp"
     android:paddingTop="16dp"
+    android:paddingEnd="16dp"
     android:paddingBottom="8dp"
+    android:theme="@style/Theme.Home"
     tools:context=".ui.fragments.main.MainFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -20,41 +20,41 @@
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/search_container"
+            style="@style/Widget.Home.CardView"
             android:layout_width="0dp"
             android:layout_height="40dp"
+            android:backgroundTint="@color/grey_200"
             app:layout_constraintEnd_toStartOf="@+id/filter_container"
             app:layout_constraintStart_toStartOf="parent"
-            style="@style/Widget.Home.CardView"
-            android:backgroundTint="@color/grey_200"
             app:layout_constraintTop_toTopOf="parent">
 
             <EditText
                 android:id="@+id/searchField"
+                style="@style/TextAppearance.Home.Text1"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:inputType="text"
-                android:enabled="false"
-                android:maxLines="1"
-                android:background = "@android:color/transparent"
-                android:drawablePadding="8dp"
-                android:gravity="center_vertical"
-                android:padding="10dp"
-                android:importantForAutofill="no"
-                android:textColor="@color/grey_300"
-                android:hint="Должность, ключевые слова"
-                android:textColorHint="@color/grey_300"
-                style="@style/TextAppearance.Home.Text1"
+                android:background="@android:color/transparent"
                 android:drawableStart="@drawable/ic_search"
-                android:drawableTint="@color/grey_300" />
+                android:drawablePadding="8dp"
+                android:drawableTint="@color/grey_300"
+                android:enabled="false"
+                android:gravity="center_vertical"
+                android:hint="Должность, ключевые слова"
+                android:importantForAutofill="no"
+                android:inputType="text"
+                android:maxLines="1"
+                android:padding="10dp"
+                android:textColor="@color/grey_300"
+                android:textColorHint="@color/grey_300" />
 
         </com.google.android.material.card.MaterialCardView>
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/filter_container"
+            style="@style/Widget.Home.CardView"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginStart="10dp"
-            style="@style/Widget.Home.CardView"
             android:backgroundTint="@color/grey_200"
             app:layout_constraintBottom_toBottomOf="@id/search_container"
             app:layout_constraintEnd_toEndOf="parent"
@@ -63,64 +63,64 @@
 
             <ImageView
                 android:id="@+id/filterButton"
-                android:clickable="true"
-                android:focusable="true"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:clickable="true"
+                android:focusable="true"
                 android:padding="12dp"
-                android:src="@drawable/ic_filter"/>
+                android:src="@drawable/ic_filter" />
 
         </com.google.android.material.card.MaterialCardView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-    
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/promo_rv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:layout_marginTop="10dp"
+        android:orientation="horizontal"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toTopOf="@id/vacancies_title"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/top_container"
-        tools:listitem="@layout/item_offer"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/vacancies_title" />
+        tools:listitem="@layout/item_offer" />
 
     <TextView
         android:id="@+id/vacancies_title"
-        android:layout_width="match_parent"
-        android:text="Вакансии для вас"
-        android:layout_marginTop="10dp"
-        android:textFontWeight="500"
         style="@style/TextAppearance.Home.Title2"
-        app:layout_constraintTop_toBottomOf="@id/promo_rv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Вакансии для вас"
+        android:textFontWeight="500"
         app:layout_constraintBottom_toTopOf="@id/mainRecyclerView"
-        android:layout_height="wrap_content"/>
+        app:layout_constraintTop_toBottomOf="@id/promo_rv" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/mainRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="16dp"
-        tools:listitem="@layout/item_vacancy"
         app:layout_constraintBottom_toTopOf="@+id/moreVacanciesButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/vacancies_title" />
+        app:layout_constraintTop_toBottomOf="@id/vacancies_title"
+        tools:listitem="@layout/item_vacancy" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/moreVacanciesButton"
+        style="@style/TextAppearance.Home.ButtonText1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cornerRadius="8dp"
+        android:layout_marginTop="10dp"
         android:padding="14dp"
         android:text="Ещё 143 вакансии"
-        android:layout_marginTop="10dp"
+        app:cornerRadius="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        style="@style/TextAppearance.Home.ButtonText1" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

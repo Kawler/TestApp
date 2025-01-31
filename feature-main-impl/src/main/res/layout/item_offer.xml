@@ -1,54 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="132dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/offer_container"
+    style="@style/Widget.Home.CardView"
+    android:layout_width="132dp"
     android:layout_height="120dp"
     android:layout_marginEnd="8dp"
     android:clickable="true"
     android:focusable="true"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    style="@style/Widget.Home.CardView"
     android:theme="@style/Theme.Home">
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="8dp">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent">
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
                 android:id="@+id/offer_promo_img"
                 android:layout_width="32dp"
                 android:layout_height="32dp"
-                android:src="@drawable/ic_location"
-                android:padding="5dp"
                 android:background="@drawable/promo_img_bg"
-                />
+                android:padding="5dp"
+                android:src="@drawable/ic_location" />
+
             <TextView
                 android:id="@+id/offerTitleTextView"
+                style="@style/TextAppearance.Home.Title4"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="1"
                 android:layout_marginTop="10dp"
-                android:text="Вакансии рядом с вами"
+                android:layout_weight="1"
                 android:maxLines="3"
-                style="@style/TextAppearance.Home.Title4"
+                android:text="Вакансии рядом с вами"
                 app:layout_constrainedHeight="true" />
 
             <TextView
                 android:id="@+id/offerButtonTextView"
+                style="@style/TextAppearance.Home.Text1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="1dp"
-                android:textColor="@color/green"
-                style="@style/TextAppearance.Home.Text1"
-                />
+                android:textColor="@color/green" />
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>

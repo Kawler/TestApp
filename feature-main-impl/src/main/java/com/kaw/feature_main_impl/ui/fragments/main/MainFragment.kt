@@ -1,5 +1,6 @@
 package com.kaw.feature_main_impl.ui.fragments.main
 
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -15,8 +16,8 @@ import com.hannesdorfmann.adapterdelegates4.ListDelegationAdapter
 import com.kaw.core_utils.StringUtil
 import com.kaw.feature_main_impl.R
 import com.kaw.feature_main_impl.databinding.MainFragmentBinding
-import com.kaw.feature_main_impl.ui.delegates.OfferDelegate
-import com.kaw.feature_main_impl.ui.delegates.VacancyDelegate
+import com.kaw.feature_main_impl.ui.delegates.offerDelegate
+import com.kaw.feature_main_impl.ui.delegates.vacancyDelegate
 import com.kaw.feature_main_impl.ui.viemodels.MainScreenSharedViewModel
 import com.kaw.feature_main_impl.ui.viemodels.SharedViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -57,12 +58,17 @@ class MainFragment : Fragment() {
 
     private fun setupRecyclerview() {
         adapterOffers = ListDelegationAdapter(
-            OfferDelegate(),
+            offerDelegate(),
         )
         adapterVacancies = ListDelegationAdapter(
-            VacancyDelegate { vacancyId, isFavorite ->
-                viewModel.updateFavorite(vacancyId, isFavorite)
-            }
+            vacancyDelegate(
+                onFavoriteClicked = { vacancyId, isFavorite ->
+                    viewModel.updateFavorite(vacancyId, isFavorite)
+                },
+                onItemClicked = {
+                    navigateToVacancyDetails()
+                }
+            )
         )
 
         binding.promoRv.apply {
@@ -75,6 +81,11 @@ class MainFragment : Fragment() {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = this@MainFragment.adapterVacancies
         }
+    }
+
+    private fun navigateToVacancyDetails() {
+        val deepLinkUri = Uri.parse("app://details")
+        findNavController().navigate(deepLinkUri)
     }
 
     private fun setupObservers() {

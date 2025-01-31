@@ -1,5 +1,6 @@
 package com.kaw.feature_main_impl.ui.fragments.relevance
 
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -14,7 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.hannesdorfmann.adapterdelegates4.ListDelegationAdapter
 import com.kaw.core_utils.StringUtil
 import com.kaw.feature_main_impl.databinding.VacanciesByRelevanceFragmentBinding
-import com.kaw.feature_main_impl.ui.delegates.VacancyDelegate
+import com.kaw.feature_main_impl.ui.delegates.vacancyDelegate
 import com.kaw.feature_main_impl.ui.viemodels.MainScreenSharedViewModel
 import com.kaw.feature_main_impl.ui.viemodels.SharedViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -50,9 +51,14 @@ class VacanciesByRelevanceFragment : Fragment() {
 
     private fun setupRecyclerview() {
         adapter = ListDelegationAdapter(
-            VacancyDelegate{ vacancyId, isFavorite ->
-                viewModel.updateFavorite(vacancyId, isFavorite)
-            }
+            vacancyDelegate(
+                onFavoriteClicked = { vacancyId, isFavorite ->
+                    viewModel.updateFavorite(vacancyId, isFavorite)
+                },
+                onItemClicked = {
+                    navigateToVacancyDetails()
+                }
+            )
         )
 
         binding.vacanciesByRelevanceRecyclerView.apply {
@@ -62,18 +68,31 @@ class VacanciesByRelevanceFragment : Fragment() {
 
     }
 
+    private fun navigateToVacancyDetails() {
+        val deepLinkUri = Uri.parse("app://details")
+        findNavController().navigate(deepLinkUri)
+    }
+
     private fun setupObservers() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 launch {
                     viewModel.screenData.collect { screenData ->
-                        if(screenData != null){
-                            binding.vacanciesByRelevanceRecyclerView.visibility = if(screenData.vacancies.isNullOrEmpty()) View.GONE else View.VISIBLE
+                        if (screenData != null) {
+                            binding.vacanciesByRelevanceRecyclerView.visibility =
+                                if (screenData.vacancies.isNullOrEmpty()) View.GONE else View.VISIBLE
                             val vacanciesCount = screenData.vacancies?.size ?: 0
-                            val pluralized = StringUtil.getCorrectPlural(vacanciesCount, "вакансия", "вакансии", "вакансий")
+                            val pluralized = StringUtil.getCorrectPlural(
+                                vacanciesCount,
+                                "вакансия",
+                                "вакансии",
+                                "вакансий"
+                            )
                             binding.vacanciesCountTextView.text = "$vacanciesCount $pluralized"
-                            binding.vacanciesCountTextView.visibility = if(screenData.vacancies.isNullOrEmpty()) View.GONE else View.VISIBLE
-                            binding.filterTextBtn.visibility = if(screenData.vacancies.isNullOrEmpty()) View.GONE else View.VISIBLE
+                            binding.vacanciesCountTextView.visibility =
+                                if (screenData.vacancies.isNullOrEmpty()) View.GONE else View.VISIBLE
+                            binding.filterTextBtn.visibility =
+                                if (screenData.vacancies.isNullOrEmpty()) View.GONE else View.VISIBLE
                             adapter.items = screenData.vacancies
                             adapter.notifyDataSetChanged()
                         }

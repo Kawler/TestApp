@@ -8,7 +8,7 @@ import javax.inject.Inject
 
 class GetMainScreenDataUseCaseImpl @Inject constructor(
     private val mainRepository: MainRepository
-): GetMainScreenDataUseCase {
+) : GetMainScreenDataUseCase {
     override fun execute(): Flow<MainScreenData> {
         return mainRepository.getMainScreenData()
     }

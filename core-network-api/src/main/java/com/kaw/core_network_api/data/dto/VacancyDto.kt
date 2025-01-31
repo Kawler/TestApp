@@ -2,7 +2,7 @@ package com.kaw.core_network_api.data.dto
 
 import com.squareup.moshi.Json
 
-data class VacancyDto (
+data class VacancyDto(
     val id: String,
     @Json(name = "lookingNumber")
     val lookingNumber: Int?,

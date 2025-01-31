@@ -25,10 +25,12 @@ class NetworkModule {
     fun provideJobSearchService(retrofitClient: RetrofitClient): JobSearchService {
         return retrofitClient.service
     }
+
     @Provides
     fun provideRemoteDataSource(service: JobSearchService): RemoteDataSource {
         return RemoteDataSourceImpl(service)
     }
+
     @Singleton
     @Provides
     fun provideCachedRepository(remoteDataSource: RemoteDataSource): CachedRepository {

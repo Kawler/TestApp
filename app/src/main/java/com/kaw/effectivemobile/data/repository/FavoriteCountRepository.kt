@@ -5,15 +5,12 @@ import com.kaw.core_network_api.domain.repository.CachedRepository
 import com.kaw.effectivemobile.domain.repository.FavoriteCountRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.combine
-import kotlinx.coroutines.flow.map
-import kotlinx.coroutines.flow.onStart
 import javax.inject.Inject
-import javax.inject.Singleton
 
 class FavoriteCountRepositoryImpl @Inject constructor(
     private val cachedRepository: CachedRepository,
     private val localDataSource: LocalDataSource
-):FavoriteCountRepository {
+) : FavoriteCountRepository {
     override fun getFavoriteCount(): Flow<Int> =
         cachedRepository.getResponse()
             .combine(localDataSource.getAll()) { response, localFavorites ->

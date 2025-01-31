@@ -5,7 +5,7 @@ import java.util.Locale
 
 object DateUtil {
     fun formatPublishedDate(dateString: String?): String {
-        if (dateString.isNullOrBlank()){
+        if (dateString.isNullOrBlank()) {
             return ""
         }
         val inputFormat = DateTimeFormat.forPattern("yyyy-MM-dd")
@@ -22,16 +22,16 @@ object DateUtil {
         return if (day in 11..13) {
             "${day}-e"
         } else {
-            when(day % 10){
+            when (day % 10) {
                 1 -> "${day}-e"
-                2,3,4 -> "${day}-е"
+                2, 3, 4 -> "${day}-е"
                 else -> "${day}-й"
             }
         }
     }
 
     private fun getCorrectMonthName(month: Int): String {
-        return when(month){
+        return when (month) {
             1 -> "января"
             2 -> "февраля"
             3 -> "марта"

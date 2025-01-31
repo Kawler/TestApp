@@ -3,9 +3,9 @@ package com.kaw.core_db_impl.di
 import android.content.Context
 import androidx.room.Room
 import com.kaw.core_db_api.data.dao.FavoriteVacancyDao
+import com.kaw.core_db_api.domain.source.LocalDataSource
 import com.kaw.core_db_impl.data.db.AppDatabase
 import com.kaw.core_db_impl.data.source.LocalDataSourceImpl
-import com.kaw.core_db_api.domain.source.LocalDataSource
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
