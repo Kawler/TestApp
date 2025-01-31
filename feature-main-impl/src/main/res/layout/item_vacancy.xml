@@ -4,6 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:theme="@style/Theme.Home"
+    android:clickable="true"
+    android:focusable="true"
     android:layout_marginBottom="8dp"
     style="@style/Widget.Home.CardView">
 
@@ -119,6 +121,7 @@
             app:layout_constraintTop_toTopOf="parent"/>
 
         <com.google.android.material.button.MaterialButton
+            android:id="@+id/vacancy_apply_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"

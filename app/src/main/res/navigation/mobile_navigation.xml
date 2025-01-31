@@ -24,6 +24,21 @@
         android:name="com.kaw.feature_main_impl.ui.fragments.relevance.VacanciesByRelevanceFragment"
         android:label="VacanciesByRelevanceFragment"
         tools:layout="@layout/vacancies_by_relevance_fragment"/>
+    <fragment
+        android:id="@+id/callbacksFragment"
+        android:name="com.kaw.effectivemobile.ui.fragments.callbacks.CallbacksFragment"
+        android:label="fragment_callbacks"
+        tools:layout="@layout/fragment_callbacks" />
+    <fragment
+        android:id="@+id/messagesFragment"
+        android:name="com.kaw.effectivemobile.ui.fragments.messages.MessagesFragment"
+        android:label="fragment_messages"
+        tools:layout="@layout/fragment_messages" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.kaw.effectivemobile.ui.fragments.profile.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
 
 
 </navigation>

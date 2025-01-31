@@ -12,12 +12,12 @@
         android:title="Избранное"/>
 
     <item
-        android:id="@+id/callbackFragment"
+        android:id="@+id/callbacksFragment"
         android:icon="@drawable/ic_callbacks"
         android:title="Отклики"/>
 
     <item
-        android:id="@+id/messageFragment"
+        android:id="@+id/messagesFragment"
         android:icon="@drawable/ic_messages"
         android:title="Сообщения"/>
 

@@ -1,4 +1,4 @@
-package com.kaw.effectivemobile.ui
+package com.kaw.effectivemobile.ui.activity
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

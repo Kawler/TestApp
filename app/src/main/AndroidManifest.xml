@@ -17,7 +17,7 @@
         android:theme="@style/Theme.EffMob"
         tools:targetApi="31">
         <activity
-            android:name=".ui.MainActivity"
+            android:name=".ui.activity.MainActivity"
             android:exported="true"
             android:label="@string/app_name">
             <intent-filter>

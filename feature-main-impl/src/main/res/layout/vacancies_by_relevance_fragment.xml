@@ -41,18 +41,23 @@
                     android:focusable="true"
                     android:src="@drawable/ic_back"/>
 
-                <TextView
+                <EditText
                     android:id="@+id/searchField"
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:layout_weight="1"
+                    android:inputType="text"
+                    android:enabled="false"
                     android:maxLines="1"
-                    android:drawablePadding="8dp"
+                    android:background = "@android:color/transparent"
                     android:gravity="center_vertical"
                     android:padding="10dp"
+                    android:importantForAutofill="no"
                     android:textColor="@color/grey_300"
-                    android:text="Должность, ключевые слова"
-                    style="@style/TextAppearance.Home.Text1"/>
+                    android:ellipsize="end"
+                    android:hint="Должность по подходящим вакансиям"
+                    android:textColorHint="@color/grey_300"
+                    style="@style/TextAppearance.Home.Text1"
+                    android:drawableTint="@color/grey_300" />
             </LinearLayout>
 
         </com.google.android.material.card.MaterialCardView>
@@ -74,6 +79,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:padding="12dp"
+                android:clickable="true"
+                android:focusable="true"
                 android:src="@drawable/ic_filter"/>
 
         </com.google.android.material.card.MaterialCardView>
@@ -100,6 +107,9 @@
         android:drawableEnd="@drawable/ic_sort"
         android:textColor="@color/blue"
         android:text="По соответсвию"
+        android:clickable="true"
+        android:focusable="true"
+        android:enabled="false"
         android:drawablePadding="5dp"
         style="@style/TextAppearance.Home.Text1"
         app:layout_constraintEnd_toEndOf="parent"
@@ -115,6 +125,23 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/vacanciesCountTextView" />
+
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Карта"
+        app:icon="@drawable/ic_map"
+        android:paddingHorizontal="13dp"
+        app:iconPadding="8dp"
+        app:iconSize="24dp"
+        app:cornerRadius="50dp"
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="@color/grey_200"
+        android:textFontWeight="200"
+        style="@style/TextAppearance.Home.Title3"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:paddingVertical="12dp"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
 
     

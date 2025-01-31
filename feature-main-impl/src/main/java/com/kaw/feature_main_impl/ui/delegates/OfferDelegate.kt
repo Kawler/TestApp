@@ -1,6 +1,8 @@
 package com.kaw.feature_main_impl.ui.delegates
 
+import android.content.Intent
 import android.content.res.ColorStateList
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -20,7 +22,14 @@ fun OfferDelegate() = adapterDelegateViewBinding<Offer, Any, ItemOfferBinding>(
         binding.offerTitleTextView.setLineSpacing(0F, 0.9F)
         binding.offerButtonTextView.apply {
             text = item.button?.text?.trim()
-            visibility = if(item.button?.text.isNullOrEmpty()) View.GONE else View.VISIBLE
+        }
+
+        if (item.button?.text.isNullOrEmpty() || item.button == null) {
+            binding.offerButtonTextView.visibility = View.GONE
+            binding.offerTitleTextView.maxLines = 3
+        } else {
+            binding.offerTitleTextView.maxLines = 2
+            binding.offerButtonTextView.visibility = View.VISIBLE
         }
 
         binding.offerPromoImg.apply {
@@ -44,7 +53,17 @@ fun OfferDelegate() = adapterDelegateViewBinding<Offer, Any, ItemOfferBinding>(
                 else -> visibility = View.GONE
             }
         }
-        itemView.setOnClickListener {
+        binding.offerContainer.apply {
+            item.link?.let { link ->
+                isClickable = true
+                setOnClickListener {
+                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(link))
+                    context.startActivity(intent)
+                }
+            } ?: run {
+                isClickable = false
+                setOnClickListener(null)
+            }
         }
     }
 }
