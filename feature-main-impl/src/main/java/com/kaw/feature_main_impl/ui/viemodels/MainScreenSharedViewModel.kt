@@ -35,10 +35,7 @@ class MainScreenSharedViewModel @Inject constructor(
 
     override fun updateFavorite(vacancyId: String, isFavorite: Boolean) {
         viewModelScope.launch {
-            //Я чёт нашпарил кода, а потом подумал что хз как на это будут смотреть
-            //Я могу загружать данные в БД и потом проверять на их отличие пришедших с сервера, и если есть то обновлять
-            //Но потом подумал что в требованиях брать именно из Json и теперь хз
-            //updateFavoriteUseCase.execute(vacancyId, isFavorite)
+            updateFavoriteUseCase.execute(vacancyId, isFavorite).collect{}
             val currentData = _screenData.value ?: return@launch
             val updatedVacancies = currentData.vacancies!!.map { vacancy ->
                 if(vacancy.id == vacancyId){

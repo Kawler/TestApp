@@ -1,7 +1,7 @@
 package com.kaw.feature_main_impl.data.repository
 
 import com.kaw.core_db_api.domain.entity.FavoriteVacancyEntity
-import com.kaw.core_db_impl.domain.source.LocalDataSource
+import com.kaw.core_db_api.domain.source.LocalDataSource
 import com.kaw.core_network_api.domain.repository.CachedRepository
 import com.kaw.core_utils.DateUtil
 import com.kaw.feature_main_api.domain.models.Address
@@ -13,6 +13,7 @@ import com.kaw.feature_main_api.domain.models.Salary
 import com.kaw.feature_main_api.domain.models.Vacancy
 import com.kaw.feature_main_api.domain.repository.MainRepository
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject
@@ -23,19 +24,10 @@ class MainRepositoryImpl @Inject constructor(
 ) : MainRepository {
 
     override fun getMainScreenData(): Flow<MainScreenData> =
-        cachedRepository.getResponse().map { response ->
-            MainScreenData(
-                offers = response.offers.map { offerDto ->
-                    Offer(
-                        id = offerDto.id,
-                        title = offerDto.title,
-                        link = offerDto.link,
-                        button = offerDto.button?.let { buttonDto ->
-                            Button(buttonDto.text)
-                        }
-                    )
-                },
-                vacancies = response.vacancies.map { vacancyDto ->
+        cachedRepository.getResponse()
+            .combine(localDataSource.getAll()) { response, localFavorites ->
+                val vacancies = response.vacancies.map { vacancyDto ->
+                    val localFavorite = localFavorites.find { it.id == vacancyDto.id }
                     Vacancy(
                         id = vacancyDto.id,
                         lookingNumber = vacancyDto.lookingNumber,
@@ -51,7 +43,7 @@ class MainRepositoryImpl @Inject constructor(
                             text = vacancyDto.experience.text
                         ),
                         publishedDate = DateUtil.formatPublishedDate(vacancyDto.publishedDate),
-                        isFavorite = vacancyDto.isFavorite,
+                        isFavorite = localFavorite?.isFavorite ?: vacancyDto.isFavorite,
                         salary = Salary(
                             short = vacancyDto.salary.short,
                             full = vacancyDto.salary.full
@@ -62,8 +54,20 @@ class MainRepositoryImpl @Inject constructor(
                         questions = vacancyDto.questions
                     )
                 }
-            )
-        }
+                MainScreenData(
+                    offers = response.offers.map { offerDto ->
+                        Offer(
+                            id = offerDto.id,
+                            title = offerDto.title,
+                            link = offerDto.link,
+                            button = offerDto.button?.let { buttonDto ->
+                                Button(buttonDto.text)
+                            }
+                        )
+                    },
+                    vacancies = vacancies
+                )
+            }
 
 
     override fun updateFavorite(vacancyId: String, isFavorite: Boolean): Flow<Unit> = flow {

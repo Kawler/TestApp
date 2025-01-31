@@ -51,7 +51,8 @@ class FavoriteFragment : Fragment() {
 
     private fun setupRecyclerview() {
         adapterVacancies = ListDelegationAdapter(
-            VacancyDelegate { _, _ ->
+            VacancyDelegate { vacancyId, isFavorite ->
+                viewModel.updateFavorite(vacancyId, isFavorite)
             }
         )
 

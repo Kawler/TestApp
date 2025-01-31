@@ -1,7 +1,8 @@
 package com.kaw.feature_favorite_impl.data.repository
 
+import com.kaw.core_db_api.domain.entity.FavoriteVacancyEntity
+import com.kaw.core_db_api.domain.source.LocalDataSource
 import com.kaw.core_network_api.domain.repository.CachedRepository
-import com.kaw.core_network_api.domain.source.RemoteDataSource
 import com.kaw.core_utils.DateUtil
 import com.kaw.feature_favorite_api.domain.models.Address
 import com.kaw.feature_favorite_api.domain.models.Experience
@@ -10,20 +11,22 @@ import com.kaw.feature_favorite_api.domain.models.Salary
 import com.kaw.feature_favorite_api.domain.models.Vacancy
 import com.kaw.feature_favorite_api.domain.repository.FavoriteRepository
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
+
 class FavoriteRepositoryImpl @Inject constructor(
-    private val cachedRepository: CachedRepository
+    private val cachedRepository: CachedRepository,
+    private val localDataSource: LocalDataSource
 ) : FavoriteRepository {
 
     override fun getFavoriteScreenData(): Flow<FavoriteScreenData> =
-        cachedRepository.getResponse().map { response ->
-            FavoriteScreenData(
-                vacancies = response.vacancies.filter {
-                    it.isFavorite
-                }.map { vacancyDto ->
+        cachedRepository.getResponse()
+            .combine(localDataSource.getAll()) { response, localFavorites ->
+                val vacancies = response.vacancies.map { vacancyDto ->
+                    val localFavorite = localFavorites.find { it.id == vacancyDto.id }
                     Vacancy(
                         id = vacancyDto.id,
                         lookingNumber = vacancyDto.lookingNumber,
@@ -39,7 +42,7 @@ class FavoriteRepositoryImpl @Inject constructor(
                             text = vacancyDto.experience.text
                         ),
                         publishedDate = DateUtil.formatPublishedDate(vacancyDto.publishedDate),
-                        isFavorite = vacancyDto.isFavorite,
+                        isFavorite = localFavorite?.isFavorite ?: vacancyDto.isFavorite,
                         salary = Salary(
                             short = vacancyDto.salary.short,
                             full = vacancyDto.salary.full
@@ -50,12 +53,11 @@ class FavoriteRepositoryImpl @Inject constructor(
                         questions = vacancyDto.questions
                     )
                 }
-            )
-        }
-
+                FavoriteScreenData(vacancies = vacancies.filter { it.isFavorite })
+            }
 
     override fun updateFavorite(vacancyId: String, isFavorite: Boolean): Flow<Unit> = flow {
-        //Опять же, будет противоречие ТЗ, если я в локалку закину
+        localDataSource.insert(FavoriteVacancyEntity(vacancyId, isFavorite))
         emit(Unit)
     }
 }

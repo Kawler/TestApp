@@ -48,6 +48,8 @@ dependencies {
     implementation(project(":core-network-api"))
     
     implementation(libs.room.runtime)
+    implementation(project(":core-db-api"))
+    implementation(project(":core-db-impl"))
     ksp(libs.androidx.room.compiler)
     implementation(libs.androidx.room.ktx)
     testImplementation(libs.androidx.room.testing)

@@ -2,7 +2,7 @@ package com.kaw.effectivemobile.ui.activity
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.kaw.effectivemobile.data.repository.FavoriteCountRepository
+import com.kaw.effectivemobile.domain.repository.FavoriteCountRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
