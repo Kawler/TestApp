@@ -1,6 +1,6 @@
 package com.kaw.effectivemobile.data.repository
 
-import com.kaw.core_network_impl.domain.repository.CachedRepository
+import com.kaw.core_network_api.domain.repository.CachedRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.onStart

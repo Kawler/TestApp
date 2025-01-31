@@ -3,7 +3,6 @@ package com.kaw.core_db_impl.di
 import android.content.Context
 import androidx.room.Room
 import com.kaw.core_db_api.data.dao.FavoriteVacancyDao
-import com.kaw.core_db_impl.data.dao.FavoriteVacancyDaoImpl
 import com.kaw.core_db_impl.data.db.AppDatabase
 import com.kaw.core_db_impl.data.source.LocalDataSourceImpl
 import com.kaw.core_db_impl.domain.source.LocalDataSource
@@ -37,11 +36,6 @@ abstract class DbModule {
         @Provides
         fun provideFavoriteVacancyDao(database: AppDatabase): FavoriteVacancyDao {
             return database.favoriteVacancyDao()
-        }
-
-        @Provides
-        fun provideFavoriteVacancyDaoImpl(dao: FavoriteVacancyDao): FavoriteVacancyDaoImpl{
-            return dao as FavoriteVacancyDaoImpl
         }
     }
 }

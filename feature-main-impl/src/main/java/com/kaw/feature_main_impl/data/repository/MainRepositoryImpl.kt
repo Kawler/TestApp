@@ -2,7 +2,7 @@ package com.kaw.feature_main_impl.data.repository
 
 import com.kaw.core_db_api.domain.entity.FavoriteVacancyEntity
 import com.kaw.core_db_impl.domain.source.LocalDataSource
-import com.kaw.core_network_impl.domain.repository.CachedRepository
+import com.kaw.core_network_api.domain.repository.CachedRepository
 import com.kaw.core_utils.DateUtil
 import com.kaw.feature_main_api.domain.models.Address
 import com.kaw.feature_main_api.domain.models.Button

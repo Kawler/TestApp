@@ -14,7 +14,7 @@ import dagger.hilt.android.components.ViewModelComponent
 abstract class FavoriteModule {
 
     @Binds
-    abstract fun bindFavoriteRepository(mainRepositoryImpl: FavoriteRepositoryImpl): FavoriteRepository
+    abstract fun bindFavoriteRepository(favoriteRepositoryImpl: FavoriteRepositoryImpl): FavoriteRepository
 
     @Binds
     abstract fun bindGetFavoriteScreenDataUseCase(getMainScreenDataUseCaseImpl: GetFavoriteScreenDataUseCaseImpl): GetFavoriteScreenDataUseCase

@@ -1,6 +1,7 @@
 package com.kaw.core_network_impl.domain.repository
 
 import com.kaw.core_network_api.data.dto.ResponseDto
+import com.kaw.core_network_api.domain.repository.CachedRepository
 import com.kaw.core_network_api.domain.source.RemoteDataSource
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -20,9 +21,9 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class CachedRepository @Inject constructor(
+class CachedRepositoryImpl @Inject constructor(
     private val remoteDataSource: RemoteDataSource,
-) {
+): CachedRepository {
     private val _cachedResponse = MutableStateFlow<ResponseDto?>(null)
 
     private val _isDataLoaded = MutableStateFlow(false)
@@ -43,7 +44,7 @@ class CachedRepository @Inject constructor(
         }
     }
 
-    fun getResponse(): Flow<ResponseDto> = flow {
+    override fun getResponse(): Flow<ResponseDto> = flow {
         _isDataLoaded.filter { it }.take(1).first()
 
         _cachedResponse.value?.let { cached ->

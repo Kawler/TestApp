@@ -1,10 +1,11 @@
 package com.kaw.core_network_impl.di
 
 import com.kaw.core_network_api.data.service.JobSearchService
+import com.kaw.core_network_api.domain.repository.CachedRepository
 import com.kaw.core_network_api.domain.source.RemoteDataSource
 import com.kaw.core_network_impl.data.remote.RetrofitClient
 import com.kaw.core_network_impl.data.source.RemoteDataSourceImpl
-import com.kaw.core_network_impl.domain.repository.CachedRepository
+import com.kaw.core_network_impl.domain.repository.CachedRepositoryImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -31,7 +32,7 @@ class NetworkModule {
     @Singleton
     @Provides
     fun provideCachedRepository(remoteDataSource: RemoteDataSource): CachedRepository {
-        return CachedRepository(remoteDataSource)
+        return CachedRepositoryImpl(remoteDataSource)
     }
 
 }
